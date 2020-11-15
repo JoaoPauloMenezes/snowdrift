@@ -31,6 +31,6 @@ class SnowBank extends Model
      */
     public function location()
     {
-        return $this->hasOne('App\Models\Location', 'foreign_key');
+        return $this->hasOne('App\Models\Location', 'id');
     }
 }
