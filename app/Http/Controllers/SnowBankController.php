@@ -36,18 +36,8 @@ class SnowBankController extends Controller
      */
     public function store(Request $request)
     {
-        $location = Location::firstOrCreate([
-            ['latitude', '<=', floatval($request->input('latitude')) + 0.000005],
-            ['latitude', '>=', floatval($request->input('latitude')) - 0.000005],
-            ['longitude', '<=', floatval($request->input('longitude')) + 0.000005],
-            ['longitude', '>=', floatval($request->input('longitude')) - 0.000005],
-        ],
-        [
-            'latitude' => $request->input('latitude'),
-            'longitude' => $request->input('longitude'),
-            'address' => $request->input('address'),
-        ]);
-        $location->save();
+
+        $location = $this->findNearLocationOrCreate($request);
 
         return SnowBank::create([
             'supplies' => $request->input('supplies'),
@@ -87,18 +77,7 @@ class SnowBankController extends Controller
      */
     public function update(Request $request, SnowBank $snowBank)
     {
-        $location = Location::firstOrCreate([
-            ['latitude', '<=', floatval($request->input('latitude')) + 0.000005],
-            ['latitude', '>=', floatval($request->input('latitude')) - 0.000005],
-            ['longitude', '<=', floatval($request->input('longitude')) + 0.000005],
-            ['longitude', '>=', floatval($request->input('longitude')) - 0.000005],
-        ],
-        [
-            'latitude' => $request->input('latitude'),
-            'longitude' => $request->input('longitude'),
-            'address' => $request->input('address'),
-        ]);
-        $location->save();
+        $location = $this->findNearLocationOrCreate($request);
 
         SnowBank::create([
             'supplies' => $request->input('supplies'),
@@ -118,5 +97,30 @@ class SnowBankController extends Controller
     public function destroy(SnowBank $snowBank)
     {
         //
+    }
+    
+
+    /**
+     * Find a location with a minimal change in the  position
+     *
+     * @param  @param  \Illuminate\Http\Request  $request
+     * @return \App\Models\Location $location
+     */
+    function findNearLocationOrCreate(Request $request){
+        $location = Location::firstOrCreate([
+            ['latitude', '<=', floatval($request->input('latitude')) + 0.000005],
+            ['latitude', '>=', floatval($request->input('latitude')) - 0.000005],
+            ['longitude', '<=', floatval($request->input('longitude')) + 0.000005],
+            ['longitude', '>=', floatval($request->input('longitude')) - 0.000005],
+        ],
+        [
+            'latitude' => $request->input('latitude'),
+            'longitude' => $request->input('longitude'),
+            'address' => $request->input('address'),
+        ]);
+
+        $location->save();
+
+        return $location;
     }
 }
