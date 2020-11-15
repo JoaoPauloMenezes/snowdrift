@@ -24,7 +24,12 @@ class SnowBank extends Model
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden = [
+        'id',
+        'location_id',
+        'created_at',
+        'updated_at',
+    ];
 
     /**
      * Get the location record associated with the snowBank.

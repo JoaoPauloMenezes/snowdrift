@@ -26,7 +26,11 @@ class Location extends Model
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
 
     /**
      * Get the snowBank that owns the phone.
