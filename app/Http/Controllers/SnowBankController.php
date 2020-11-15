@@ -59,7 +59,7 @@ class SnowBankController extends Controller
      */
     public function show(SnowBank $snowBank)
     {
-        return $snowBank;
+        return $snowBank->with('location')->find($snowBank->id);
     }
 
     /**
