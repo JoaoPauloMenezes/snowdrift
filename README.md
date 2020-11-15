@@ -10,6 +10,8 @@
 
 ## Configuring the Project
 
+Hello teammate, I developed an API to be able to map all the snow piles that hold our precious supplies.
+
 After clone the project run these commands :
 
 ``` bash
@@ -24,6 +26,20 @@ For utilizing the API just access the path /api/snowBank with the temporary toke
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InJlZFRlYW0iLCJpYXQiOjE1MTYyMzkwMjJ9.a9bpT3YnBs1TckrqOM5nOmOpcs2rEA7rsk249OAOtAU
 ```
 After access this path you can create/update/delete the snowbanks with the METHODS POST/DELETE and you can list all of them acessing with the GET METHOD.
+
+For update or create a new snowBank posistion you will need to pass some data, like the example below.
+``` bash
+curl --location --request GET 'http://127.0.0.1:8000/api/snowBank' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InJlZFRlYW0iLCJpYXQiOjE1MTYyMzkwMjJ9.a9bpT3YnBs1TckrqOM5nOmOpcs2rEA7rsk249OAOtAU' \
+--header 'Cookie: XSRF-TOKEN=eyJpdiI6IjY4Z1BFZWdJU2FCMjFxaVBJZnBaaHc9PSIsInZhbHVlIjoiOGtKNm9aM3V1cGZqelFyN2tBdHE1Z042bDRpS2JuQ0dBSFVXODgwLzZrZ1EvYzJjUlZGeEo2T1FZZjcxaGlHVHFad2dPbzZ1T0lYd2tQMVVySno0YTdkdFZtSjlydnVXZ29tUUJQaHhiZDJZeWxqb2tqT3ZHbUcxczhwMy9zZ20iLCJtYWMiOiJhNjk3NGZiY2ZiYTY2ZTg0YmE3OWFkOWMyODc2YTRlZGRlZDFjNWMyOGE1Y2Q0YWU3YWE3MjhjMDc2MjNmMTgyIn0%3D; laravel_session=eyJpdiI6IlNlRHlRVVRKTW1YQkR0WkFtaTEySGc9PSIsInZhbHVlIjoiZmtldkpiNy8zSWRCK293Zk5saHVEbklrUmJHOVdyUi9xM0NWMTB6dkhpWmJBb2l6WHVCSEFEN0FDRXdEbDBJNEpxZ1BCQVJtKy9URTUrK2RlVytoQWV5c2ZNZWhZcHoxUGV3b052REM2eWlNMFYzWERtMlZQRDdzc1ZXWFowNngiLCJtYWMiOiI3ZTI5NzIyMjA4NGY4NDA1NWY0OGNlMmE5M2M0ZmM3Y2M4ODgwOTVhNjlhODMzOTdmN2JjMmMxMjc1OWY5YzgxIn0%3D' \
+--form 'supplies=Some cans of corn and coffee' \
+--form 'description=This snowdrift is right under the bakery stall' \
+--form 'latitude=40.7367687' \
+--form 'longitude=-73.9933876' \
+--form 'address=96 5th Ave, New York, NY 10011'
+```
+
+Good luck in your search and remember, stay safe!
 
 ## About Laravel
 
