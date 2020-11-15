@@ -123,7 +123,8 @@ class SnowBankController extends Controller
             'longitude' => $request->input('longitude'),
             'address' => $request->input('address'),
         ]);
-
+        
+        $location->address = $request->input('address');
         $location->save();
 
         return $location;
