@@ -17,7 +17,7 @@ class CreateLocationsTable extends Migration
             $table->id();
             $table->decimal('latitude', 14, 10);
             $table->decimal('longitude', 14, 10);
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

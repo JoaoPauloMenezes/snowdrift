@@ -18,7 +18,6 @@ class Location extends Model
     protected $fillable = [
         'latitude',
         'longitude',
-        'address',
     ];
 
     /**
@@ -33,10 +32,11 @@ class Location extends Model
     ];
 
     /**
-     * Get the snowBank that owns the phone.
+     * Get the comments for the blog post.
      */
     public function snowBank()
     {
-        return $this->belongsTo('App\Models\SnowBank', 'foreign_key');
+        return $this->hasMany('App\Models\SnowBank');
     }
+
 }

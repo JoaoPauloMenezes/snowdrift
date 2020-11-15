@@ -17,6 +17,7 @@ class SnowBank extends Model
     protected $fillable = [
         'supplies',
         'description',
+        'location_id',
     ];
 
     /**
@@ -36,6 +37,6 @@ class SnowBank extends Model
      */
     public function location()
     {
-        return $this->hasOne('App\Models\Location', 'id');
+        return $this->belongsTo('App\Models\Location', 'id');
     }
 }
