@@ -39,11 +39,16 @@ class SnowBankController extends Controller
 
         $location = $this->findNearLocationOrCreate($request);
 
-        return SnowBank::create([
-            'supplies' => $request->input('supplies'),
-            'description' => $request->input('description'),
-            'location_id' => $location->id
-        ])->with('location')->get();
+        return SnowBank::updateOrCreate(
+            [
+                'location_id' => $location->id
+            ],
+            [
+                'supplies' => $request->input('supplies'),
+                'description' => $request->input('description'),
+                'location_id' => $location->id
+            ],
+        )->with('location')->get();
     }
 
     /**
