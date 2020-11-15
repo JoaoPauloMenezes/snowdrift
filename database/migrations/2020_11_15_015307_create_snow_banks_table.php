@@ -19,6 +19,7 @@ class CreateSnowBanksTable extends Migration
             $table->string('description');
             $table->foreignId('location_id')->constrained('locations');
             $table->timestamps();
+            $table->softDeletes('deleted_at', 0);
         });
     }
 
