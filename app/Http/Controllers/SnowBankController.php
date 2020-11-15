@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\SnowBank;
 use App\Models\Location;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class SnowBankController extends Controller
 {
+    use SoftDeletes;
+
     /**
      * Display a listing of the resource.
      *
@@ -101,7 +104,7 @@ class SnowBankController extends Controller
      */
     public function destroy(SnowBank $snowBank)
     {
-        //
+        return $snowBank->delete();
     }
     
 
